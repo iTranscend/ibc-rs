@@ -32,7 +32,7 @@ where
 
     let status = client_state.status(ctx.get_client_validation_context(), &client_id)?;
 
-    if status.is_frozen() {
+    if !status.is_active() {
         return Err(ClientError::ClientFrozen {
             description: "the client is frozen".to_string(),
         }
